@@ -17,4 +17,10 @@ public class Controller
 	{
 		return qm.getData();
 	}
+    public void newBook(String title, String author, String year, String comment, String grade)
+    {
+    	//qm = new QueryManager();
+    	qm.insert(title, author, year, comment, grade);
+    	//qm.getData();
+    }
 }

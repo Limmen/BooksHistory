@@ -4,56 +4,66 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.PrintStream;
+import java.util.ArrayList;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JMenu;
+import javax.swing.JLabel;
 import javax.swing.JMenuBar;
-import javax.swing.JTextArea;
+import javax.swing.JPanel;
+
+import Util.booksDTO;
 
 public class MainFrame extends JFrame {
     private PrintStream standardOut;
     private JMenuBar jmenu;
-    EditFrame edit; 
-    public MainFrame() {
+    private EditFrame edit;
+    private NewFrame newbook;
+    private GUI gui;
+    private JLabel text;
+    private JPanel tablepanel;
+    private ArrayList<booksDTO> books;
+    
+    public MainFrame(GUI gui, ArrayList<booksDTO> books) {
         super("bookshistory");
-        //EditFrame edit = new EditFrame(this);
+        this.gui = gui;
+        this.books = books;
+   
        Menu menu = new Menu();
-       // Add the menubar to the frame
        setJMenuBar(menu.getMenu());
-       menu.getNewAction().addActionListener(new ActionListener() {
-           public void actionPerformed(ActionEvent arg0) {
-               //System.out.println("You have clicked on the new action");
-        	   showEdit();
-        	   //hidex();
+       menu.getNewAction().addActionListener(new ActionListener() 
+       {
+           public void actionPerformed(ActionEvent arg0) 
+           {
+        	   showNew();
                
            }
        });
        
-       Table table = new Table();
-       add(table.getTable(), BorderLayout.CENTER);
-       
-         
-         
+       menu.getEditAction().addActionListener(new ActionListener() 
+       {
+           public void actionPerformed(ActionEvent arg0) 
+           {
+        	   showEdit();
+               
+           }
+       });
+      
+        Table table = new Table(books);
+        add(table.getTable(), BorderLayout.CENTER); 
+      
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);
         setLocationRelativeTo(null);    // centers on screen
         setVisible(true);
     }
     
-   public void hidex()
-   {
-	   this.setVisible(false);
-   }
-   
-   public void showx()
-   {
-	   this.setVisible(true); 
-   }
    public void showEdit()
    {
-	   //edit.showx();
-	   EditFrame edit = new EditFrame(this);
+	   edit = new EditFrame(this, gui);
+   }
+   public void showNew()
+   {
+	    newbook = new NewFrame(this, gui);
    }
 
  

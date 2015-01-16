@@ -8,10 +8,13 @@ import javax.swing.JMenuBar;
 
 public class EditFrame extends JFrame
 {
+	private GUI gui;
 	private JMenuBar jmenu;
 	private MainFrame main;
-	public EditFrame(MainFrame main)
+	public EditFrame(MainFrame main, GUI gui)
 	{
+		super("Edit");
+		this.gui = gui;
 		this.main = main;
 		Menu menu = new Menu();
 	       // Add the menubar to the frame
@@ -33,17 +36,4 @@ public class EditFrame extends JFrame
 	}
 	
 	
-	   public void hidex()
-	   {
-		   this.setVisible(false);
-	   }
-	   
-	   public void showx()
-	   {
-		   this.setVisible(true); 
-	   }
-	   public void showMain()
-	   {
-		   main.showx();
-	   }
 }
