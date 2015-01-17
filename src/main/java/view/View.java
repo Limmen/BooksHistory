@@ -11,7 +11,7 @@ public class View
 	private GUI gui;
 	private Controller contr;
 	
-	private ArrayList<booksDTO> books = new ArrayList();
+	private ArrayList<booksDTO> books;
 	public View(Controller contr)
 	{
 	this.contr = contr;
@@ -20,11 +20,11 @@ public class View
 	public void getData() throws Exception
 	{
 		ResultSet rs = contr.getData();
-		//printResult(rs);
 		buildTable(rs);
 		this.gui = new GUI(books, this);
 		
 	}
+
 	public void printResult(ResultSet rs) throws Exception
 	{
         while (rs.next())
@@ -39,6 +39,7 @@ public class View
 	
 	public void buildTable(ResultSet rs) throws Exception
 	{
+		books = new ArrayList();
 		while (rs.next())
         {            
             books.add(new booksDTO(rs.getString("Title"),
@@ -51,7 +52,16 @@ public class View
 	}
     public void newBook(String title, String author, String year, String comment, String grade)
     {
- 	 System.out.println(title+ " "+ author +" "+ year +" "+ comment +" "+ grade);  
  	 contr.newBook(title, author, year, comment, grade);
     }
+    public void delBook(String title)
+    {
+    	contr.delBook(title);
+    }
+	public void refreshData() throws Exception
+	{
+		ResultSet rs = contr.getData();
+		buildTable(rs);
+		gui.updateData(books);
+	}
 }

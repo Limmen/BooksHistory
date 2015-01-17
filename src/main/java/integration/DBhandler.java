@@ -85,21 +85,17 @@ public class DBhandler
 
 			return returnValue;
 		}
-		public void insertQuery(PreparedStatement statement)
+		public void updateQuery(PreparedStatement statement)
 		{
-			ResultSet returnValue = null;
 
 			try
 			{
-				//returnValue = statement.executeQuery();
-				statement.executeUpdate();			
+			  statement.executeUpdate();			
 			} catch (SQLException e)
 			{
 				System.out.println(e.getMessage());
 				System.out.println("Failed to execute query. Please ensure that the query adhered to SQL syntax.");
 			}
-
-			//return returnValue;
 
 		}
 		

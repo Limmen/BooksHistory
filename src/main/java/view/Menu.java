@@ -31,26 +31,11 @@ public class Menu
         editAction = new JMenuItem("Edit");
         deleteAction = new JMenuItem("Delete");
         
-        // Create and add CheckButton as a menu item to one of the drop down
-        // menu
-        //JCheckBoxMenuItem checkAction = new JCheckBoxMenuItem("Check Action");
-        // Create and add Radio Buttons as simple menu items to one of the drop
-        // down menu
-       // JRadioButtonMenuItem radioAction1 = new JRadioButtonMenuItem(
-                //"Radio Button1");
-        //JRadioButtonMenuItem radioAction2 = new JRadioButtonMenuItem(
-                //"Radio Button2");
-        // Create a ButtonGroup and add both radio Button to it. Only one radio
-        // button in a ButtonGroup can be selected at a time.
-        //ButtonGroup bg = new ButtonGroup();
-        //bg.add(radioAction1);
-        //bg.add(radioAction2);
+       
         optionsMenu.add(newAction);
         optionsMenu.add(editAction);
         optionsMenu.add(deleteAction);
-       // optionsMenu.addSeparator();
-        // Add a listener to the New menu item. actionPerformed() method will
-        // invoked, if user triggred this menu item
+
 
     }
 	

@@ -34,7 +34,8 @@ public class NewFrame extends JFrame
 	private ButtonGroup gradegroup;
 	private JLabel gradelabel;
 	
-	 final JRadioButton A = new JRadioButton("1", true);
+	 final JRadioButton None = new JRadioButton("None", true);
+	 final JRadioButton A = new JRadioButton("1");
      final JRadioButton B = new JRadioButton("2");
      final JRadioButton C = new JRadioButton("3");
      final JRadioButton D = new JRadioButton("4");
@@ -101,13 +102,15 @@ public class NewFrame extends JFrame
 		constraints.gridy = 5;
 		constraints.gridx = 0;
 		add(gradelabel, constraints);
-		gradegroup = new ButtonGroup();		
+		gradegroup = new ButtonGroup();	
+		gradegroup.add(None);
 		gradegroup.add(A);
 		gradegroup.add(B);
 		gradegroup.add(C);
 		gradegroup.add(D);
 		gradegroup.add(E);
 		
+		gradePanel.add(None);
         gradePanel.add(A);
         gradePanel.add(B);
         gradePanel.add(C);
@@ -124,7 +127,10 @@ public class NewFrame extends JFrame
         {
             public void actionPerformed(ActionEvent arg0) 
             {
+            
                String grade = null;
+               if(None.isSelected())
+            	   grade = None.getText();
                if(A.isSelected())
             	   grade = A.getText();
                if(B.isSelected())
@@ -137,6 +143,7 @@ public class NewFrame extends JFrame
             	   grade = E.getText();
                
          	   addBook(title.getText(), author.getText(), year.getText(), comment.getText(), grade);
+         	   refreshData();
          	   dispose();
                 
             }
@@ -150,6 +157,10 @@ public class NewFrame extends JFrame
 	   public void addBook(String title, String author, String year, String comment, String grade)
 	   {
 		   gui.newBook(title, author, year, comment, grade);
+	   }
+	   public void refreshData()
+	   {
+		   this.gui.refreshData();
 	   }
 	
 }

@@ -23,10 +23,30 @@ public class QueryManager
 	public void insert(String title, String author, String year, String comment, String grade)
 	{
 		String query = "INSERT INTO books(Title,Author,ReadYear,Comment,Grade) "
-				+ "VALUES ('"+ title +"', '"+ author +"'," + year + ", '" + comment +"', '" + grade +"')";
+				+ "VALUES ('"+ title +"', '"+ author +"','" + year + "', '" + comment +"', '" + grade +"')";
 		
 		PreparedStatement statement = setupStatement(query);
-		db.insertQuery(statement);
+		db.updateQuery(statement);
+		
+		try
+		{
+			db.getConnection().commit();
+		}
+		catch (SQLException e)
+		{
+			System.out.println("Could'nt commit changes to database");
+		}
+		
+	}
+	
+	public void delete(String title)
+	{
+		String query = "DELETE "
+						+ "FROM books "
+						+ "WHERE Title = '" + title + "'";
+		
+		PreparedStatement statement = setupStatement(query);
+		db.updateQuery(statement);
 		
 		try
 		{

@@ -19,8 +19,10 @@ public class Controller
 	}
     public void newBook(String title, String author, String year, String comment, String grade)
     {
-    	//qm = new QueryManager();
     	qm.insert(title, author, year, comment, grade);
-    	//qm.getData();
+    }
+    public void delBook(String title)
+    {
+    	qm.delete(title);
     }
 }

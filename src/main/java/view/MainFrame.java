@@ -18,10 +18,12 @@ public class MainFrame extends JFrame {
     private JMenuBar jmenu;
     private EditFrame edit;
     private NewFrame newbook;
+    private DeleteFrame delbook;
     private GUI gui;
     private JLabel text;
     private JPanel tablepanel;
     private ArrayList<booksDTO> books;
+    private Table table;
     
     public MainFrame(GUI gui, ArrayList<booksDTO> books) {
         super("bookshistory");
@@ -47,8 +49,17 @@ public class MainFrame extends JFrame {
                
            }
        });
+       
+       menu.getDeleteAction().addActionListener(new ActionListener() 
+       {
+           public void actionPerformed(ActionEvent arg0) 
+           {
+        	   showDelete();
+               
+           }
+       });
       
-        Table table = new Table(books);
+        table = new Table(books);
         add(table.getTable(), BorderLayout.CENTER); 
       
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -64,6 +75,16 @@ public class MainFrame extends JFrame {
    public void showNew()
    {
 	    newbook = new NewFrame(this, gui);
+   }
+   public void showDelete()
+   {
+	   delbook = new DeleteFrame(this, gui, books);
+   }
+   public void updateData(ArrayList<booksDTO> data)
+   {
+	   table.updateData(data);
+	   this.books = data;
+	   //add(table.getTable(), BorderLayout.CENTER); 
    }
 
  

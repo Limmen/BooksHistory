@@ -1,5 +1,6 @@
 package view;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Util.booksDTO;
@@ -19,9 +20,28 @@ public class GUI {
     
     public void newBook(String title, String author, String year, String comment, String grade)
     {
- 	 //System.out.println(title+ " "+ author +" "+ year +" "+ comment +" "+ grade); 
      view.newBook(title, author, year, comment, grade);
     }
     
+    public void refreshData() 
+    {
+    	try{
+    	view.refreshData();
+    	}
+    	catch(Exception e)
+    	{
+    		System.out.println("Could not update data!!!");
+    		e.printStackTrace();
+    	}
+    }
+    public void updateData(ArrayList<booksDTO> data)
+    {
+    	main.updateData(data);
+    }
+    
+    public void delBook(String title)
+    {
+    	view.delBook(title);
+    }
 
 }
