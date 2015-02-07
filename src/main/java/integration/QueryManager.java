@@ -16,13 +16,13 @@ public class QueryManager
 	public ResultSet getData() throws Exception
 	{
 		//insert("", "", "", "", "");
-		String query = "SELECT * FROM Books";
+		String query = "SELECT * FROM BOOKS";
 		PreparedStatement statement = setupStatement(query);
 		return db.sendQuery(statement);
 	}
 	public void insert(String title, String author, String year, String comment, String grade)
 	{
-		String query = "INSERT INTO books(Title,Author,ReadYear,Comment,Grade) "
+		String query = "INSERT INTO BOOKS(Title,Author,ReadYear,Comment,Grade) "
 				+ "VALUES ('"+ title +"', '"+ author +"','" + year + "', '" + comment +"', '" + grade +"')";
 		
 		PreparedStatement statement = setupStatement(query);

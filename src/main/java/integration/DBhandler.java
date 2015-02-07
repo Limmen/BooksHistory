@@ -4,21 +4,19 @@ import java.sql.*;
 
 public class DBhandler 
 {
-    	// DB connection variable
 	    static protected Connection con;
-	    // DB access variables
-	    private String URL = "jdbc:odbc:bookhistory";
-	    private String driver = "sun.jdbc.odbc.JdbcOdbcDriver";
-	    private String userID = "";
-	    private String password = "";
-	    
-
+            //private String URL = "jdbc:derby:/home/kim/.netbeans/8.0.2/derby/books2";
+            // private String URL = "jdbc:derby:/home/kim/.netbeans-derby/books";
+             //private String URL = "jdbc:derby://localhost:1527/books";
+             private String URL = "jdbc:derby:book";
+             //private String URL =  "/home/kim/.netbeans/8.0.2/derby/book";
+            
 	    public DBhandler()
 	    {
 	    	
 	    }
 	    // method for establishing a DB connection
-	    public void connect()
+	/*    public void connect()
 	    {
 	        try
 	        {
@@ -38,6 +36,23 @@ public class DBhandler
 	            e.printStackTrace();
 	        }
 	    }
+            */
+        void connect()
+    {
+        try
+        {
+            //Class.forName("org.apache.derby.jdbc.ClientDriver").newInstance();
+            //Class.forName("org.apache.derby.jdbc.EmbeddedDriver").newInstance();
+            String driver = "org.apache.derby.jdbc.EmbeddedDriver";
+            Class.forName(driver).newInstance();
+            //Get a connection
+            con = DriverManager.getConnection(URL); 
+        }
+        catch (Exception except)
+        {
+            except.printStackTrace();
+        }
+    }
 
 	    public boolean isConnected() throws Exception
 		{
