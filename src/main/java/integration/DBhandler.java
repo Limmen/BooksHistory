@@ -9,6 +9,7 @@ public class DBhandler
             // private String URL = "jdbc:derby:/home/kim/.netbeans-derby/books";
              //private String URL = "jdbc:derby://localhost:1527/books";
              private String URL = "jdbc:derby:book";
+            ///private String URL = "jdbc:derby:src/main/resources/book";
              //private String URL =  "/home/kim/.netbeans/8.0.2/derby/book";
             
 	    public DBhandler()
