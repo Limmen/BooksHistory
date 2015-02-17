@@ -1,8 +1,10 @@
 package controller;
 
+import Util.booksDTO;
 import integration.QueryManager;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class Controller 
 {
@@ -24,5 +26,9 @@ public class Controller
     public void delBook(String title)
     {
     	qm.delete(title);
+    }
+    public void edit(ArrayList<booksDTO> editedbooks, ArrayList<booksDTO> books)
+    {
+        qm.edit(editedbooks,books);
     }
 }

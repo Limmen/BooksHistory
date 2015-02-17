@@ -1,6 +1,8 @@
 package integration;
 
+import Util.booksDTO;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class QueryManager 
 {
@@ -57,6 +59,35 @@ public class QueryManager
 			System.out.println("Could'nt commit changes to database");
 		}
 		
+	}
+        
+        	public void edit(ArrayList<booksDTO> editedbooks, ArrayList<booksDTO> books)
+	{
+                for(int i = 0; i < books.size(); i++)
+                {
+                    booksDTO b = editedbooks.get(i);
+                    booksDTO c = books.get(i);
+                    String query = "UPDATE books"
+                                    + " SET Title='" +b.getTitle() + "', Author='" + b.getAuthor() +  
+                                    "', ReadYear='" + b.getYear() + "', Comment='" + b.getComment() +
+                                    "', Grade='" + b.getGrade() + "'" +
+                                    " WHERE Title='" +c.getTitle() + "'"
+                                    + " AND Author='" + c.getAuthor() +"'" +  
+                                    " AND ReadYear='" + c.getYear() + "'" +
+                                    " AND Comment='" + c.getComment() + "'" +
+                                    " AND Grade='" + c.getGrade() + "'";
+                    
+                    PreparedStatement statement = setupStatement(query);
+                    db.updateQuery(statement);
+		try
+		{
+			db.getConnection().commit();
+		}
+		catch (SQLException e)
+		{
+			System.out.println("Could'nt commit changes to database");
+		}
+                }
 	}
 
 	   

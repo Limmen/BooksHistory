@@ -64,4 +64,8 @@ public class View
 		buildTable(rs);
 		gui.updateData(books);
 	}
+    public void edit(ArrayList<booksDTO> editedbooks, ArrayList<booksDTO> books)
+    {
+        contr.edit(editedbooks,books);
+    }
 }

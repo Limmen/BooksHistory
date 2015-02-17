@@ -43,9 +43,16 @@ public class EditTable
 				model = new DefaultTableModel(rowData,columnNames) {
 
 				    @Override
-				    public boolean isCellEditable(int row, int column) {
+				    public boolean isCellEditable(int row, int column) 
+                                    {
+                                          //this.fireTableCellUpdated(row, column);
 				      return true;
 				    }
+                                     public void setValueAt(Object value, int row, int col) 
+                                     {
+                                        rowData[row][col] = value;
+                                        model.setDataVector(rowData, columnNames);
+                                     }
 				};
 				table = new JTable(model);
                                 table.setRowHeight(20);
@@ -73,6 +80,23 @@ public class EditTable
 		}
 		model.setDataVector(rowData, columnNames);
 	}
+        
+        public ArrayList<booksDTO> edited ()
+        {
+            ArrayList<booksDTO> edited = new ArrayList();
+            for (int i = 0; i < rowData.length; i++)
+            {
+                String title = (String) rowData[i][0];
+                String author = (String) rowData[i][1];
+                String year = (String) rowData[i][2];
+                String comment = (String) rowData[i][3];
+                String grade = (String) rowData[i][4];
+                booksDTO b = new booksDTO(title,author,year,comment,grade);
+                
+                edited.add(b);
+            }
+            return edited;
+        }
 
 	
 }

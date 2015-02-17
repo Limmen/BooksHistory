@@ -1,6 +1,6 @@
 package Util;
 
-public class booksDTO 
+public class booksDTO implements Comparable
 {
 	private String title;
 	private String author;
@@ -36,4 +36,18 @@ public class booksDTO
 	{
 		return this.grade;
 	}
+
+    @Override
+    public int compareTo(Object c) 
+    {
+        booksDTO b = (booksDTO) c;
+         if(b.author.equalsIgnoreCase(this.author) && b.comment.equalsIgnoreCase(this.comment)
+                && b.grade.equalsIgnoreCase(this.grade) && b.title.equalsIgnoreCase(this.title)
+                && b.year.equalsIgnoreCase(this.year))
+        {
+            return 0;
+        }
+        else
+            return -1;
+    }
 }

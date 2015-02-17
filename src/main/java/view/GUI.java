@@ -43,5 +43,8 @@ public class GUI {
     {
     	view.delBook(title);
     }
-
+    public void edit(ArrayList<booksDTO> editbooks, ArrayList<booksDTO> books)
+    {
+        view.edit(editbooks, books);
+    }
 }

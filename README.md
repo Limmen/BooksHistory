@@ -1,7 +1,7 @@
 #BooksHistory
 
 ##What is this?
-This is a hobbyproject in Java. The goal is to create a desktop application that interacts with a database right now i am using embedded derby DB as my database.
+This is a hobbyproject in Java. The goal is to create a desktop application that interacts with a database. Right now i am using embedded derby DB as my database.
 
 ##Functionality
 

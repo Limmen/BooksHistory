@@ -22,6 +22,9 @@ public class EditFrame extends JFrame
 	private MainFrame main;
         private EditTable table;
         private ArrayList<booksDTO> books;
+        private ArrayList<booksDTO> oldbooks;
+        private ArrayList<booksDTO> editedbooks;
+        private ArrayList<booksDTO> ebooks;
         private JButton save;
 	public EditFrame(MainFrame main, GUI gui, ArrayList<booksDTO> books)
 	{
@@ -41,11 +44,9 @@ public class EditFrame extends JFrame
         {
             // If Nimbus is not available, you can set the GUI to another look and feel.
         }
-                
 		this.gui = gui;
 		this.main = main;
                 this.books = books;
-	
         setLayout(new GridBagLayout());
                
 	GridBagConstraints constraints = new GridBagConstraints();
@@ -66,10 +67,10 @@ public class EditFrame extends JFrame
         add(table.getTable(), constraints);
 
         save.addActionListener(new ActionListener() {
-	           public void actionPerformed(ActionEvent arg0) {
-	               //System.out.println("You have clicked on the new action");
-                       
-	               
+	           public void actionPerformed(ActionEvent arg0) 
+                   {   
+                       editBooks();
+                       dispose();
 	           }
 	       });
         
@@ -80,6 +81,32 @@ public class EditFrame extends JFrame
         setLocationRelativeTo(null);    // centers on screen
         setVisible(true);
 	}
-	
+
+           public void editBooks()
+	   {
+               editedbooks = new ArrayList();
+               oldbooks = new ArrayList();
+               boolean edited = false;
+               ebooks = table.edited();
+               for (int i = 0; i< books.size(); i++)
+               {
+                   int res = books.get(i).compareTo(ebooks.get(i));
+                   if(res != 0)
+                   {
+                       editedbooks.add(ebooks.get(i));
+                       oldbooks.add(books.get(i));
+                       edited = true;
+                   }
+               }
+               if(edited == true)
+               {
+                   this.gui.edit(editedbooks,oldbooks);
+                   refreshData();
+               }
+	   }
+	   public void refreshData()
+	   {
+		   this.gui.refreshData();
+	   }
 	
 }
