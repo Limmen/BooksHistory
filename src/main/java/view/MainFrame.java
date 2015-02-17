@@ -12,6 +12,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 
 import Util.booksDTO;
+import java.awt.Color;
+import javax.swing.JScrollPane;
+import javax.swing.UIManager;
 
 public class MainFrame extends JFrame {
     private PrintStream standardOut;
@@ -27,6 +30,21 @@ public class MainFrame extends JFrame {
     
     public MainFrame(GUI gui, ArrayList<booksDTO> books) {
         super("bookshistory");
+        try 
+        {
+        for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) 
+        {
+            if ("Nimbus".equals(info.getName())) {
+                UIManager.setLookAndFeel(info.getClassName());
+                UIManager.getLookAndFeelDefaults().put("control", Color.RED);
+                break;
+            }
+        }
+        } 
+        catch (Exception e) 
+        {
+            // If Nimbus is not available, you can set the GUI to another look and feel.
+        }
         this.gui = gui;
         this.books = books;
    
@@ -60,17 +78,21 @@ public class MainFrame extends JFrame {
        });
       
         table = new Table(books);
-        add(table.getTable(), BorderLayout.CENTER); 
+        JScrollPane t = table.getTable();
+        t.setBackground(Color.red);
+        add(t, BorderLayout.CENTER); 
       
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(800, 600);
+        //setSize(800, 600);
+        setBackground(Color.BLACK);
+        pack();
         setLocationRelativeTo(null);    // centers on screen
         setVisible(true);
     }
     
    public void showEdit()
    {
-	   edit = new EditFrame(this, gui);
+	   edit = new EditFrame(this, gui, books);
    }
    public void showNew()
    {

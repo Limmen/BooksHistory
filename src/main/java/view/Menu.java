@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -24,12 +25,18 @@ public class Menu
       
         // Define and add two drop down menu to the menubar
         JMenu optionsMenu = new JMenu("Options");
+        Font f = optionsMenu.getFont();
+        // bold
+        optionsMenu.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
         menuBar.add(optionsMenu);
         
         // Create and add simple menu item to one of the drop down menu
         newAction = new JMenuItem("New book");
+        newAction.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
         editAction = new JMenuItem("Edit");
+        editAction.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
         deleteAction = new JMenuItem("Delete");
+        deleteAction.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
         
        
         optionsMenu.add(newAction);

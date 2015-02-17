@@ -9,6 +9,7 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 
 import Util.booksDTO;
+import java.awt.Font;
 
 public class Table
 {
@@ -32,33 +33,23 @@ public class Table
 			rowData[i][3] = b.getComment();
 			rowData[i][4] = b.getGrade();
 		}
-		/*
-		 		Object rowData[][] = { { "Row1-Column1", "Row1-Column2", "Row1-Column3",
-		 			"Row1-Column4","Row1-Column5" },
-			        { "Row2-Column1", "Row2-Column2", "Row2-Column3","Row2-Column4",
-			        		 "Row2-Column5" } };
-			    
-			        		*/
-		/*
-			    Object columnNames[] = { "Title", "Author", "Year", "Comment",
-			    		"Grade"};
-			    		*/
 				columnNames = new Object[5];
 				columnNames[0] = "Title";
 				columnNames[1] = "Author";
 				columnNames[2] = "Year";
 				columnNames[3] = "Comment";
 				columnNames[4] = "Grade";
-			    		
+			   
 				model = new DefaultTableModel(rowData,columnNames) {
 
 				    @Override
 				    public boolean isCellEditable(int row, int column) {
-				       return false;
+				      return false;
 				    }
 				};
 				table = new JTable(model);
-			    scrollPane = new JScrollPane(table);
+                                table.setRowHeight(20);
+                                scrollPane = new JScrollPane(table);
 		
 	}
 	

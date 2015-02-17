@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -16,6 +17,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
 
 public class NewFrame extends JFrame
 {
@@ -34,29 +37,51 @@ public class NewFrame extends JFrame
 	private ButtonGroup gradegroup;
 	private JLabel gradelabel;
 	
-	 final JRadioButton None = new JRadioButton("None", true);
-	 final JRadioButton A = new JRadioButton("1");
-     final JRadioButton B = new JRadioButton("2");
-     final JRadioButton C = new JRadioButton("3");
-     final JRadioButton D = new JRadioButton("4");
-     final JRadioButton E = new JRadioButton("5");
+	final JRadioButton None = new JRadioButton("None", true);
+	final JRadioButton A = new JRadioButton("1");
+        final JRadioButton B = new JRadioButton("2");
+        final JRadioButton C = new JRadioButton("3");
+        final JRadioButton D = new JRadioButton("4");
+        final JRadioButton E = new JRadioButton("5");
      
-     JPanel gradePanel;
-     JLabel text;
+        JPanel gradePanel;
+        JLabel text;
      
 	public NewFrame(MainFrame main, GUI gui) 
 	{
-		super("New book");
-		this.gui = gui;
-		this.main = main;
-		setLayout(new GridBagLayout());
-		GridBagConstraints constraints = new GridBagConstraints();
-		constraints.gridx = 0;
+	super("New book");
+        try 
+        {
+        for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) 
+        {
+            if ("Nimbus".equals(info.getName())) {
+                UIManager.setLookAndFeel(info.getClassName());
+                UIManager.getLookAndFeelDefaults().put("control", Color.RED);
+                break;
+            }
+        }
+        } 
+        catch (Exception e) 
+        {
+            // If Nimbus is not available, you can set the GUI to another look and feel.
+        }
+        
+	this.gui = gui;
+	this.main = main;
+	setLayout(new GridBagLayout());
+	GridBagConstraints constraints = new GridBagConstraints();
+        constraints.gridx = 0;
         constraints.gridy = 0;
         constraints.insets = new Insets(15, 15, 15, 15);
         constraints.anchor = GridBagConstraints.NORTH;
+        constraints.weightx = 2.0;
+        constraints.weighty = 2.0;
         
         text = new JLabel("Enter info about the book");
+        Font f = text.getFont();
+        // bold
+        text.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+        
         add(text, constraints);
         
 		titlelabel = new JLabel("Title:");
@@ -122,6 +147,9 @@ public class NewFrame extends JFrame
         constraints.gridy = 6;
 		constraints.gridx = 0;
         addBook = new JButton("Add");
+        Font b = addBook.getFont();
+        // bold
+        addBook.setFont(b.deriveFont(b.getStyle() | Font.BOLD));
         add(addBook, constraints);
         addBook.addActionListener(new ActionListener() 
         {
@@ -150,7 +178,9 @@ public class NewFrame extends JFrame
         });
         
         //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(600, 600);
+        //setSize(600, 600);
+       
+        pack();
         setLocationRelativeTo(null);    // centers on screen
         setVisible(true);
 	}

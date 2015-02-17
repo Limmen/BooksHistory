@@ -16,6 +16,9 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 import Util.booksDTO;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.UIManager;
 
 public class DeleteFrame extends JFrame
 {
@@ -33,6 +36,22 @@ public class DeleteFrame extends JFrame
 	public DeleteFrame(MainFrame main, GUI gui, ArrayList<booksDTO> books)
 	{
 		super("Delete");
+                try 
+        {
+        for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) 
+        {
+            if ("Nimbus".equals(info.getName())) {
+                UIManager.setLookAndFeel(info.getClassName());
+                UIManager.getLookAndFeelDefaults().put("control", Color.RED);
+                break;
+            }
+        }
+        } 
+        catch (Exception e) 
+        {
+            // If Nimbus is not available, you can set the GUI to another look and feel.
+        }
+                
 		this.gui = gui;
 		this.main = main;
 		this.books = books;
@@ -83,6 +102,9 @@ public class DeleteFrame extends JFrame
         constraints.gridy = constraints.gridy+1;
         constraints.insets = new Insets(10, 10, 10, 10);
         delbutton = new JButton("Delete");
+        Font f = delbutton.getFont();
+        // bold
+        delbutton.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
         add(delbutton, constraints);
         delbutton.addActionListener(new ActionListener() 
         {
@@ -99,7 +121,8 @@ public class DeleteFrame extends JFrame
         });
 		
         //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(800, 600);
+        //setSize(800, 600);
+        pack();
         setLocationRelativeTo(null);    // centers on screen
         setVisible(true);
 	}
