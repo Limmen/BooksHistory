@@ -35,7 +35,6 @@ public class EditFrame extends JFrame
         {
             if ("Nimbus".equals(info.getName())) {
                 UIManager.setLookAndFeel(info.getClassName());
-                UIManager.getLookAndFeelDefaults().put("control", Color.RED);
                 break;
             }
         }
@@ -57,6 +56,7 @@ public class EditFrame extends JFrame
         constraints.weighty = 1.0;       
          
         save = new JButton("Save");
+        save.setFont(new Font("Serif", Font.ITALIC, 16));
         Font f = save.getFont();
         // bold
         save.setFont(f.deriveFont(f.getStyle() | Font.BOLD));

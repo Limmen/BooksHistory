@@ -1,12 +1,13 @@
 package view;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.font.TextAttribute;
+import java.util.Map;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -56,7 +57,6 @@ public class NewFrame extends JFrame
         {
             if ("Nimbus".equals(info.getName())) {
                 UIManager.setLookAndFeel(info.getClassName());
-                UIManager.getLookAndFeelDefaults().put("control", Color.RED);
                 break;
             }
         }
@@ -77,14 +77,19 @@ public class NewFrame extends JFrame
         constraints.weightx = 2.0;
         constraints.weighty = 2.0;
         
-        text = new JLabel("Enter info about the book");
+        text = new JLabel("Enter information about the book");
+        text.setFont(new Font("Serif", Font.ITALIC, 16));
         Font f = text.getFont();
         // bold
+        Map attributes = f.getAttributes();
+        attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+        text.setFont(f.deriveFont(attributes));
         text.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
         
         add(text, constraints);
         
 		titlelabel = new JLabel("Title:");
+                titlelabel.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
 		constraints.gridx = 0;
 		constraints.gridy = 1;
 		add(titlelabel, constraints);
@@ -94,6 +99,7 @@ public class NewFrame extends JFrame
         add(title, constraints);
         
 		authorlabel = new JLabel("Author:");
+                authorlabel.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
 		constraints.gridy = 2;
 		constraints.gridx = 0;
 		add(authorlabel, constraints);
@@ -102,6 +108,7 @@ public class NewFrame extends JFrame
         add(author, constraints);
         
 		yearlabel = new JLabel("Year:");
+                yearlabel.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
 		constraints.gridy = 3;
 		constraints.gridx = 0;
 		add(yearlabel, constraints);
@@ -110,6 +117,7 @@ public class NewFrame extends JFrame
         add(year, constraints);
         
 		commentlabel = new JLabel("Comment:");
+                commentlabel.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
 		constraints.gridy = 4;
 		constraints.gridx = 0;
 		add(commentlabel, constraints);
@@ -122,12 +130,20 @@ public class NewFrame extends JFrame
         add(comment, constraints);
 		
         gradePanel = new JPanel();
+        gradePanel.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
         //gradePanel.setLayout(new GridBagLayout());
 		gradelabel = new JLabel("Grade:");
+                gradelabel.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
 		constraints.gridy = 5;
 		constraints.gridx = 0;
 		add(gradelabel, constraints);
 		gradegroup = new ButtonGroup();	
+                None.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+                A.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+                B.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+                C.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+                D.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+                E.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
 		gradegroup.add(None);
 		gradegroup.add(A);
 		gradegroup.add(B);

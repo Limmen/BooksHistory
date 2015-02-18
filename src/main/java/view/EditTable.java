@@ -7,7 +7,9 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import Util.booksDTO;
+import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -56,7 +58,11 @@ public class EditTable
 				};
 				table = new JTable(model);
                                 table.setRowHeight(20);
-			    scrollPane = new JScrollPane(table);
+                                table.setFont(new Font("Serif", Font.ITALIC, 16));
+                                Font f = table.getFont();
+                                table.getTableHeader().setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+                                scrollPane = new JScrollPane(table);
+                                scrollPane.getViewport().setBackground(Color.darkGray);
 		
 	}
 	

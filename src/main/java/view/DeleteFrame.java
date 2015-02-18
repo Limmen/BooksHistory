@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 import Util.booksDTO;
-import java.awt.Color;
+//import java.awt.Color;
 import java.awt.Font;
 import javax.swing.UIManager;
 
@@ -42,7 +42,6 @@ public class DeleteFrame extends JFrame
         {
             if ("Nimbus".equals(info.getName())) {
                 UIManager.setLookAndFeel(info.getClassName());
-                UIManager.getLookAndFeelDefaults().put("control", Color.RED);
                 break;
             }
         }
@@ -63,6 +62,10 @@ public class DeleteFrame extends JFrame
         constraints.insets = new Insets(10, 10, 10, 10);
         constraints.anchor = GridBagConstraints.NORTHWEST;
         text = new JLabel("Select the book you want to delete");
+        text.setFont(new Font("Serif", Font.ITALIC, 16));
+        Font f = text.getFont();
+        // bold
+        text.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
         add(text, constraints);
         
         
@@ -71,7 +74,8 @@ public class DeleteFrame extends JFrame
         constraints.insets = new Insets(1, 1, 1, 1);
         buttongroup = new ButtonGroup();
         buttonpanel = new JPanel(new GridBagLayout());
-        
+        buttonpanel.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+        None.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
         buttongroup.add(None);
         buttonpanel.add(None,constraints);
         //buttonpanel.add(None);
@@ -83,6 +87,7 @@ public class DeleteFrame extends JFrame
         {
         	String title = books.get(i).getTitle();
         	temp = new JRadioButton(title, true);
+                temp.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
         	temp.setActionCommand(title);
         	buttongroup.add(temp);
         	if(x == 4)
@@ -102,7 +107,6 @@ public class DeleteFrame extends JFrame
         constraints.gridy = constraints.gridy+1;
         constraints.insets = new Insets(10, 10, 10, 10);
         delbutton = new JButton("Delete");
-        Font f = delbutton.getFont();
         // bold
         delbutton.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
         add(delbutton, constraints);

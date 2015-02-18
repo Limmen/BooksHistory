@@ -36,7 +36,7 @@ public class MainFrame extends JFrame {
         {
             if ("Nimbus".equals(info.getName())) {
                 UIManager.setLookAndFeel(info.getClassName());
-                UIManager.getLookAndFeelDefaults().put("control", Color.RED);
+                //UIManager.put("Panel.background", Color.cyan);
                 break;
             }
         }

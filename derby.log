@@ -1,13 +1,13 @@
 ----------------------------------------------------------------
-Tue Feb 17 15:25:24 CET 2015:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance a816c00e-014b-97ed-e1f6-00000311add8 
-on database directory /home/kim/NetBeansProjects/BooksHistory/book with class loader sun.misc.Launcher$AppClassLoader@2f78743b 
-Loaded from file:/home/kim/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+Wed Feb 18 09:37:06 CET 2015:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance a816c00e-014b-9bd5-5b6a-000007f2aa10 
+on database directory C:\Users\Kim\Documents\NetBeansProjects\bookshistory\BooksHistory\book with class loader sun.misc.Launcher$AppClassLoader@73d16e93 
+Loaded from file:/C:/Users/Kim/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
 java.vendor=Oracle Corporation
-java.runtime.version=1.7.0_75-b13
-user.dir=/home/kim/NetBeansProjects/BooksHistory
-os.name=Linux
+java.runtime.version=1.8.0_05-b13
+user.dir=C:\Users\Kim\Documents\NetBeansProjects\bookshistory\BooksHistory
+os.name=Windows 7
 os.arch=amd64
-os.version=3.13.0-37-generic
+os.version=6.1
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''

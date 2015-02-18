@@ -25,6 +25,7 @@ public class Menu
       
         // Define and add two drop down menu to the menubar
         JMenu optionsMenu = new JMenu("Options");
+        optionsMenu.setFont(new Font("Serif", Font.ITALIC, 16));
         Font f = optionsMenu.getFont();
         // bold
         optionsMenu.setFont(f.deriveFont(f.getStyle() | Font.BOLD));

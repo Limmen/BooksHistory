@@ -4,11 +4,10 @@ import java.util.ArrayList;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 
 import Util.booksDTO;
+import java.awt.Color;
 import java.awt.Font;
 
 public class Table
@@ -49,7 +48,11 @@ public class Table
 				};
 				table = new JTable(model);
                                 table.setRowHeight(20);
+                                table.setFont(new Font("Serif", Font.ITALIC, 16));
+                                Font f = table.getFont();
+                                table.getTableHeader().setFont(f.deriveFont(f.getStyle() | Font.BOLD));
                                 scrollPane = new JScrollPane(table);
+                                scrollPane.getViewport().setBackground(Color.darkGray);
 		
 	}
 	
