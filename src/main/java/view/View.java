@@ -54,10 +54,6 @@ public class View
     {
  	 contr.newBook(title, author, year, comment, grade);
     }
-    public void delBook(String title)
-    {
-    	contr.delBook(title);
-    }
 	public void refreshData() throws Exception
 	{
 		ResultSet rs = contr.getData();
@@ -67,5 +63,9 @@ public class View
     public void edit(ArrayList<booksDTO> editedbooks, ArrayList<booksDTO> books)
     {
         contr.edit(editedbooks,books);
+    }
+    public void delete(ArrayList<booksDTO> deletedbooks)
+    {
+        contr.delete(deletedbooks);
     }
 }

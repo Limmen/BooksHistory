@@ -89,6 +89,8 @@ public class NewFrame extends JFrame
         add(text, constraints);
         
 		titlelabel = new JLabel("Title:");
+                titlelabel.setFont(new Font("Serif", Font.ITALIC, 12));
+                f = titlelabel.getFont();
                 titlelabel.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
 		constraints.gridx = 0;
 		constraints.gridy = 1;

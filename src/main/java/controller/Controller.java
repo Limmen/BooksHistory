@@ -23,12 +23,12 @@ public class Controller
     {
     	qm.insert(title, author, year, comment, grade);
     }
-    public void delBook(String title)
-    {
-    	qm.delete(title);
-    }
     public void edit(ArrayList<booksDTO> editedbooks, ArrayList<booksDTO> books)
     {
         qm.edit(editedbooks,books);
+    }
+        public void delete(ArrayList<booksDTO> deletedbooks)
+    {
+        qm.delete(deletedbooks);
     }
 }

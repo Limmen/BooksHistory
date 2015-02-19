@@ -33,6 +33,8 @@ public class Menu
         
         // Create and add simple menu item to one of the drop down menu
         newAction = new JMenuItem("New book");
+        newAction.setFont(new Font("Serif", Font.ITALIC, 12));
+        f = newAction.getFont();
         newAction.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
         editAction = new JMenuItem("Edit");
         editAction.setFont(f.deriveFont(f.getStyle() | Font.BOLD));

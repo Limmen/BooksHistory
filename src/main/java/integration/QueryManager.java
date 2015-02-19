@@ -17,7 +17,6 @@ public class QueryManager
 	
 	public ResultSet getData() throws Exception
 	{
-		//insert("", "", "", "", "");
 		String query = "SELECT * FROM BOOKS";
 		PreparedStatement statement = setupStatement(query);
 		return db.sendQuery(statement);
@@ -40,16 +39,20 @@ public class QueryManager
 		}
 		
 	}
-	
-	public void delete(String title)
-	{
-		String query = "DELETE "
-						+ "FROM books "
-						+ "WHERE Title = '" + title + "'";
-		
-		PreparedStatement statement = setupStatement(query);
-		db.updateQuery(statement);
-		
+        public void delete(ArrayList<booksDTO> books)
+        {
+                for(int i = 0; i < books.size(); i++)
+                {
+                    booksDTO b = books.get(i);
+                    String query = "DELETE FROM books" +
+                                    " WHERE Title='" +b.getTitle() + "'"
+                                    + " AND Author='" + b.getAuthor() +"'" +  
+                                    " AND ReadYear='" + b.getYear() + "'" +
+                                    " AND Comment='" + b.getComment() + "'" +
+                                    " AND Grade='" + b.getGrade() + "'";
+                    
+                    PreparedStatement statement = setupStatement(query);
+                    db.updateQuery(statement);
 		try
 		{
 			db.getConnection().commit();
@@ -58,9 +61,8 @@ public class QueryManager
 		{
 			System.out.println("Could'nt commit changes to database");
 		}
-		
-	}
-        
+                }
+            }
         	public void edit(ArrayList<booksDTO> editedbooks, ArrayList<booksDTO> books)
 	{
                 for(int i = 0; i < books.size(); i++)

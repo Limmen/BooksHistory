@@ -38,13 +38,12 @@ public class GUI {
     {
     	main.updateData(data);
     }
-    
-    public void delBook(String title)
-    {
-    	view.delBook(title);
-    }
     public void edit(ArrayList<booksDTO> editbooks, ArrayList<booksDTO> books)
     {
         view.edit(editbooks, books);
+    }
+    public void delete(ArrayList<booksDTO> deletedbooks)
+    {
+        view.delete(deletedbooks);
     }
 }

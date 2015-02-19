@@ -27,6 +27,7 @@ public class MainFrame extends JFrame {
     private JPanel tablepanel;
     private ArrayList<booksDTO> books;
     private Table table;
+    private NewFrame2 newbook2;
     
     public MainFrame(GUI gui, ArrayList<booksDTO> books) {
         super("bookshistory");
@@ -79,7 +80,6 @@ public class MainFrame extends JFrame {
       
         table = new Table(books);
         JScrollPane t = table.getTable();
-        t.setBackground(Color.red);
         add(t, BorderLayout.CENTER); 
       
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -96,7 +96,8 @@ public class MainFrame extends JFrame {
    }
    public void showNew()
    {
-	    newbook = new NewFrame(this, gui);
+	    //newbook = new NewFrame(this, gui);
+       newbook2 = new NewFrame2(this, gui);
    }
    public void showDelete()
    {

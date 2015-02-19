@@ -2,10 +2,9 @@ package view;
 
 import Util.booksDTO;
 import java.awt.BorderLayout;
-import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,7 +12,6 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 
 import javax.swing.JFrame;
-import javax.swing.JMenuBar;
 import javax.swing.UIManager;
 
 public class EditFrame extends JFrame
@@ -46,25 +44,14 @@ public class EditFrame extends JFrame
 		this.gui = gui;
 		this.main = main;
                 this.books = books;
-        setLayout(new GridBagLayout());
-               
-	GridBagConstraints constraints = new GridBagConstraints();
-        constraints.gridy = 0;
-        constraints.insets = new Insets(15, 15, 15, 15);
-        constraints.anchor = GridBagConstraints.CENTER;
-        constraints.weightx = 1.0;
-        constraints.weighty = 1.0;       
-         
         save = new JButton("Save");
         save.setFont(new Font("Serif", Font.ITALIC, 16));
         Font f = save.getFont();
-        // bold
-        save.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
-        add(save, constraints);
-        constraints.gridy = 1;
-                       
+        save.setFont(f.deriveFont(f.getStyle() | Font.BOLD));;
+        add(save, BorderLayout.NORTH);
+        
 	table = new EditTable(books);
-        add(table.getTable(), constraints);
+        add(table.getTable(), BorderLayout.CENTER);
 
         save.addActionListener(new ActionListener() {
 	           public void actionPerformed(ActionEvent arg0) 
@@ -73,11 +60,9 @@ public class EditFrame extends JFrame
                        dispose();
 	           }
 	       });
-        
-        
-        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //setSize(800, 600);
+       
         pack();
+        setMinimumSize(new Dimension(100, 100));
         setLocationRelativeTo(null);    // centers on screen
         setVisible(true);
 	}

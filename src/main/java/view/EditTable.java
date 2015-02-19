@@ -58,7 +58,7 @@ public class EditTable
 				};
 				table = new JTable(model);
                                 table.setRowHeight(20);
-                                table.setFont(new Font("Serif", Font.ITALIC, 16));
+                                table.setFont(new Font("Serif", Font.ITALIC, 12));
                                 Font f = table.getFont();
                                 table.getTableHeader().setFont(f.deriveFont(f.getStyle() | Font.BOLD));
                                 scrollPane = new JScrollPane(table);
