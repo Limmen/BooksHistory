@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Thu Feb 19 14:39:44 CET 2015:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance a816c00e-014b-a210-c84d-00000311add8 
+Fri Feb 20 15:04:17 CET 2015:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance a816c00e-014b-a74d-a1b3-00000311add8 
 on database directory /home/kim/NetBeansProjects/BooksHistory/book with class loader sun.misc.Launcher$AppClassLoader@2f78743b 
 Loaded from file:/home/kim/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
 java.vendor=Oracle Corporation
